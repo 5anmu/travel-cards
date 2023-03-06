@@ -1,3 +1,9 @@
+Please see designs in the wiki: https://github.com/508-dev/travel-cards/wiki/Designs
+
+TODOs are tracked under the issues tab: https://github.com/508-dev/travel-cards/issues
+
+A better way to look at issues might be the project tab, which functions like a kanban board: https://github.com/orgs/508-dev/projects/5
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
