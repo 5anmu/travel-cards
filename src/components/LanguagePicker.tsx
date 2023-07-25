@@ -1,23 +1,23 @@
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
-import { LanguagesEnglish } from '@/const';
+import { LanguagesEnglish, languageLabelMap } from '@/const';
 import { useState } from 'react';
 
 export type LanguagePickerProps = {
-  onChange: (langCode: keyof typeof LanguagesEnglish | undefined) => void,
+  onChange: (langCode: LanguagesEnglish | undefined) => void,
   id: string,
   label: string,
 }
 type pickerOption = {
-  code: keyof typeof LanguagesEnglish,
-  label: LanguagesEnglish,
+  code: LanguagesEnglish,
+  label: typeof languageLabelMap[LanguagesEnglish],
 };
 
-function generateOption(key: keyof typeof LanguagesEnglish): pickerOption {
+function generateOption(key: LanguagesEnglish): pickerOption {
   return {
       code: key,
-      label: LanguagesEnglish[key],
+      label: languageLabelMap[key],
   }
 }
 function isOptionEqualToValue(option: pickerOption, value: pickerOption) {
@@ -25,7 +25,7 @@ function isOptionEqualToValue(option: pickerOption, value: pickerOption) {
 }
 export default function LanguagePicker({onChange, id, label}: LanguagePickerProps) {
   const [language, setLanguage] = useState(null as any);
-  const options = (Object.keys(LanguagesEnglish) as (keyof typeof LanguagesEnglish)[]).map(generateOption);
+  const options = Object.keys(LanguagesEnglish).map(language => generateOption(language as LanguagesEnglish));
   return (
   <Autocomplete
     value={language}
