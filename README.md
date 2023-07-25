@@ -8,19 +8,19 @@ A better way to look at issues might be the project tab, which functions like a 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Development
+## Getting Started
 
-- Install dependencies with `yarn`
+First, run the development server:
 
-- Start a dev server by running `yarn dev`
+```bash
+yarn dev
+```
 
-### Deployment
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The project is deployed and hosted via Cloudflare Pages.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Any pushes to any branch will create a QA deployment on a custom cloudflare-provided URL.
-
-Any pushes to `main` branch will automatically trigger a prod deploy at travel-cards.pages.dev.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
@@ -30,3 +30,11 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+### Deployment
+
+The project is deployed and hosted via Cloudflare Pages.
+
+Any pushes to any branch will create a QA deployment on a custom cloudflare-provided URL.
+
+Any pushes to `main` branch will automatically trigger a prod deploy at travel-cards.pages.dev.
