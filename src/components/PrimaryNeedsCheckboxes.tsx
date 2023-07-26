@@ -1,29 +1,17 @@
 import Checkboxes from '@/components/Checkboxes';
-import {LanguagesEnglish, primaryNeedsEnUS, primaryNeedsZhHant } from '@/const';
+import {primaryNeedsByLanguage, LanguageCodes, primaryNeedLabels } from '@/const';
 
 export type PrimaryNeedsCheckboxesProps = {
-  langCode: LanguagesEnglish,
+  langCode: keyof typeof LanguageCodes,
 }
 export default function PrimaryNeedsCheckboxes({langCode}: PrimaryNeedsCheckboxesProps) {
-  let primaryNeeds: typeof primaryNeedsEnUS | typeof primaryNeedsZhHant;
-  switch (langCode){
-      case LanguagesEnglish.enUS:
-      primaryNeeds = primaryNeedsEnUS;
-      case LanguagesEnglish.zhHant:
-      primaryNeeds= primaryNeedsZhHant;
-  }
-  const checkboxItems = Object.keys(primaryNeeds).map((needKey: keyof typeof primaryNeedsEnUS | keyof typeof primaryNeedsZhHant) => {
+  const primaryNeeds = primaryNeedsByLanguage[langCode];
+  const checkboxItems = (Object.keys(primaryNeeds) as (keyof primaryNeedLabels)[]).map((needKey: keyof primaryNeedLabels) => {
     return {
       label: primaryNeeds[needKey],
       code: needKey,
     };
   });
-    /* const checkboxItems = [
-*     { label: 'Test', code: 'test' },
-*     { label: 'Test2', code: 'test2' },
-*     { label: 'Test3', code: 'test3' },
-* ]
- */
   return (
     <Checkboxes items={checkboxItems} formLabel="Needs" />
   )
