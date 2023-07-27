@@ -16,15 +16,16 @@ export type CheckboxesProps = {
   items: CheckboxItem[],
   formLabel: string,
   helpText?: string,
+  handleStateChange: (selected: (CheckboxItem['code'])[]) => void,
 };
-interface State  {
+export interface CheckboxState  {
   [key: CheckboxItem['code']]: boolean,
 }
 
 // Ok to set initial state from props in this case
 // because items is not expected to change after render
-export default function Checkboxes({items, formLabel, helpText}: CheckboxesProps) {
-    const [state, setState] = useState<State>(items.reduce((stateObj: State, item: CheckboxItem) => {
+export default function Checkboxes({items, formLabel, helpText, handleStateChange}: CheckboxesProps) {
+    const [state, setState] = useState<CheckboxState>(items.reduce((stateObj: CheckboxState, item: CheckboxItem) => {
       stateObj[item.code] = false;
       return stateObj;
     }, {}));
@@ -34,6 +35,7 @@ export default function Checkboxes({items, formLabel, helpText}: CheckboxesProps
             ...state,
             [event.target.name]: event.target.checked,
         });
+        handleStateChange(Object.keys(state).filter(key => state[key]));
     };
   return (
 <Box sx={{ display: 'flex' }}>
