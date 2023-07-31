@@ -8,24 +8,24 @@ import FormHelperText from '@mui/material/FormHelperText'
 import Box from '@mui/material/Box'
 import { useState, ChangeEvent } from 'react';
 
-export type CheckboxItem = {
-  label: string,
-  code: string,
+export type CheckboxItem<T> = {
+  label: keyof T,
+  code: T[keyof T],
 };
-export type CheckboxesProps = {
-  items: CheckboxItem[],
+export type CheckboxesProps<T> = {
+  items: CheckboxItem<T>[],
+  handleStateChange: (selected: (CheckboxItem<T>['code'])[]) => void,
   formLabel: string,
-  helpText?: string,
-  handleStateChange: (selected: (CheckboxItem['code'])[]) => void,
+  helpText: string,
 };
-export interface CheckboxState  {
-  [key: CheckboxItem['code']]: boolean,
+// error points to "key" below
+export type CheckboxState<T> = {
+  [key in keyof T]: boolean
 }
-
 // Ok to set initial state from props in this case
 // because items is not expected to change after render
-export default function Checkboxes({items, formLabel, helpText, handleStateChange}: CheckboxesProps) {
-    const [state, setState] = useState<CheckboxState>(items.reduce((stateObj: CheckboxState, item: CheckboxItem) => {
+export default function Checkboxes<T>({items, formLabel, helpText, handleStateChange}: CheckboxesProps<T>) {
+    const [state, setState] = useState(items.reduce((stateObj, item) => {
       stateObj[item.code] = false;
       return stateObj;
     }, {}));
