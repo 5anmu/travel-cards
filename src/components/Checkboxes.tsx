@@ -31,11 +31,11 @@ export default function Checkboxes<T>({items, formLabel, helpText, handleStateCh
     }, {} as CheckboxState<T>));
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.checked,
-        });
-        handleStateChange((Object.keys(state) as [keyof CheckboxState<T>]).filter(key => state[key]));
+      const newState: CheckboxState<T> = {...state, [event.target.name]: event.target.checked };
+      setState({
+        ...newState,
+      });
+      handleStateChange((Object.keys(newState) as [keyof CheckboxState<T>]).filter(key => newState[key]));
     };
   return (
 <Box sx={{ display: 'flex' }}>
