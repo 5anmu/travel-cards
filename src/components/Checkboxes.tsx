@@ -9,8 +9,8 @@ import Box from '@mui/material/Box'
 import { useState, ChangeEvent } from 'react';
 
 export type CheckboxItem<T> = {
-  label: keyof T,
-  code: T[keyof T],
+  label: T[keyof T],
+  code: keyof T,
 };
 export type CheckboxesProps<T> = {
   items: CheckboxItem<T>[],
@@ -25,31 +25,31 @@ export type CheckboxState<T> = {
 // Ok to set initial state from props in this case
 // because items is not expected to change after render
 export default function Checkboxes<T>({items, formLabel, helpText, handleStateChange}: CheckboxesProps<T>) {
-    const [state, setState] = useState(items.reduce((stateObj, item) => {
+    const [state, setState] = useState<CheckboxState<T>>(items.reduce((stateObj, item) => {
       stateObj[item.code] = false;
       return stateObj;
-    }, {}));
+    }, {} as CheckboxState<T>));
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setState({
             ...state,
             [event.target.name]: event.target.checked,
         });
-        handleStateChange(Object.keys(state).filter(key => state[key]));
+        handleStateChange((Object.keys(state) as [keyof CheckboxState<T>]).filter(key => state[key]));
     };
   return (
 <Box sx={{ display: 'flex' }}>
   <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
     <FormLabel component="legend">{formLabel}</FormLabel>
     <FormGroup>
-      {items.map((item: CheckboxItem)=>{
+      {items.map((item: CheckboxItem<T>)=>{
         return (
           <FormControlLabel
-            key={item.code}
+            key={item.code as string}
             control={
-              <Checkbox checked={state[item.code]} onChange={handleChange} name={item.code} />
+              <Checkbox checked={state[item.code]} onChange={handleChange} name={item.code as string} />
             }
-            label={item.label}
+            label={item.label as string}
           />
         )
       })}
