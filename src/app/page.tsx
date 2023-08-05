@@ -10,8 +10,8 @@ export default function Home() {
   const [primaryLanguage, setPrimaryLanguage] = useState<keyof typeof LanguageCodes | ''>('');
   const [secondaryLanguage, setSecondaryLanguage] = useState('');
   const [primaryNeeds, setPrimaryNeeds] = useState<( keyof typeof PrimaryNeeds )[]>([]);
-  const handlePrimaryNeedsChanged = () => {
-
+  const handlePrimaryNeedsChanged = (primaryNeeds: (keyof typeof PrimaryNeeds)[]) => {
+    setPrimaryNeeds(primaryNeeds);
   }
   return (
     <main className="min-h-screen p-24">
