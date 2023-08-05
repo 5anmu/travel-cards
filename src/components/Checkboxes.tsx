@@ -16,7 +16,7 @@ export type CheckboxesProps<T> = {
   items: CheckboxItem<T>[],
   handleStateChange: (selected: (CheckboxItem<T>['code'])[]) => void,
   formLabel: string,
-  helpText: string,
+  helpText?: string,
 };
 // error points to "key" below
 export type CheckboxState<T> = {
