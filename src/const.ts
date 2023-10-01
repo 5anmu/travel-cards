@@ -2,12 +2,12 @@
 
 export const LanguageCodes = {
   enUS: 'enUS',
-  zhHant:  'zhHant',
+  zhHant: 'zhHant',
 } as const;
 
 export const languageLabelMapEnglish = {
-  'enUS': "English",
-  'zhHant': 'Mandarin, Traditional'
+  enUS: 'English',
+  zhHant: 'Mandarin, Traditional',
 } as const;
 
 export const PrimaryNeeds = {
@@ -21,7 +21,7 @@ export const PrimaryNeeds = {
 
 export type primaryNeedLabels = {
   [key in keyof typeof PrimaryNeeds]: string;
-}
+};
 
 export const primaryNeedsEnUS: primaryNeedLabels = {
   [PrimaryNeeds.foodAllergies]: 'Food Allergies',
@@ -42,27 +42,76 @@ export const primaryNeedsZhHant: primaryNeedLabels = {
 } as const;
 
 export const primaryNeedsByLanguage = {
-  [ LanguageCodes['enUS'] ]: primaryNeedsEnUS,
-  [ LanguageCodes['zhHant'] ]: primaryNeedsZhHant,
+  [LanguageCodes['enUS']]: primaryNeedsEnUS,
+  [LanguageCodes['zhHant']]: primaryNeedsZhHant,
 } as const;
 
-export const  FoodAllergies  = {
+export const foodAllergies = {
   peanuts: 'peanuts',
-  hazelnuts:'hazelnuts' ,
+  hazelnuts: 'hazelnuts',
   nuts: 'nuts',
   shellfish: 'shellfish',
 } as const;
 
-export const FoodAllergiesEnUS = {
-  [FoodAllergies.peanuts]: 'Peanuts',
-  [FoodAllergies.hazelnuts]: 'Hazelnuts',
-  [FoodAllergies.nuts]: 'Nuts',
-  [FoodAllergies.shellfish]: 'Shellfish',
+export const foodAllergiesEnUS = {
+  [foodAllergies.peanuts]: 'Peanuts',
+  [foodAllergies.hazelnuts]: 'Hazelnuts',
+  [foodAllergies.nuts]: 'Nuts',
+  [foodAllergies.shellfish]: 'Shellfish',
 } as const;
 
-export const FoodAllergiesZhHant = {
-  [FoodAllergies.peanuts]: '花生',
-  [FoodAllergies.hazelnuts]: '榛子',
-  [FoodAllergies.nuts]: '堅果',
-  [FoodAllergies.shellfish]: '貝類',
+export const foodAllergiesZhHant = {
+  [foodAllergies.peanuts]: '花生',
+  [foodAllergies.hazelnuts]: '榛子',
+  [foodAllergies.nuts]: '堅果',
+  [foodAllergies.shellfish]: '貝類',
+} as const;
+
+export const foodAllergiesByLanguage = {
+  [LanguageCodes['enUS']]: foodAllergiesEnUS,
+  [LanguageCodes['zhHant']]: foodAllergiesZhHant,
+} as const;
+
+export const foodRestrictions = {} as const;
+
+export const foodRestrictionsEnUS = {} as const;
+
+export const foodRestrictionsZhHant = {} as const;
+
+export const foodRestrictionsByLanguage = {
+  [LanguageCodes['enUS']]: foodRestrictionsEnUS,
+  [LanguageCodes['zhHant']]: foodRestrictionsZhHant,
+} as const;
+
+export const medicineAllergies = {} as const;
+
+export const medicineAllergiesEnUS = {} as const;
+
+export const medicineAllergiesZhHant = {} as const;
+
+export const medicineAllergiesByLanguage = {
+  [LanguageCodes['enUS']]: medicineAllergiesEnUS,
+  [LanguageCodes['zhHant']]: medicineAllergiesZhHant,
+} as const;
+
+export const medicalConditions = {} as const;
+
+export const medicalConditionsEnUS = {} as const;
+
+export const medicalConditionsZhHant = {} as const;
+
+export const medicalConditionsByLanguage = {
+  [LanguageCodes['enUS']]: medicalConditionsEnUS,
+  [LanguageCodes['zhHant']]: medicalConditionsZhHant,
+} as const;
+
+export const phobias = {} as const;
+
+export const phobiasEnUS = {} as const;
+
+export const phobiasZhHant = {} as const;
+
+export const phobiasByLanguage = {
+  [LanguageCodes['enUS']]: phobiasEnUS,
+  [LanguageCodes['zhHant']]: phobiasZhHant,
 } as const;
